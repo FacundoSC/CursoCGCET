@@ -1,5 +1,37 @@
-h1 {
+ :root{
+ --oscuro: #000;
+ --primario: #FFC107;
+
+ }/* pseudoclases  CustomProperties */
+
+
+
+html{
+ font-size: 62.5%;
+} /* seteamos el font size de la pantalla */
+
+body{
+    font-size: 16px; /** 1 rem = 10 Px   **/
+
+} /*  seteamos el  font size de el body */
+
+
+
+
+
+
+
+
+
+
+.titulo {
     text-align: center;
     text-transform: uppercase;
-    color: red;
+    font-size:  3.8rem;
+    color: var(--oscuro);
+ }
+
+ span{
+   font-size: 2rem;
+
  }
