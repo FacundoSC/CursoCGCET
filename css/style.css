@@ -20,13 +20,6 @@ body{
 
 
 
-
-
-
-
-
-
-
 .titulo {
     text-align: center;
     text-transform: uppercase;
@@ -38,5 +31,26 @@ body{
 
  span{
    font-size: 2rem;
+ }
 
+ .nav-background{
+  background-color: var(--secundario); 
+ }
+
+ .contenedor{
+   width: 90rem;
+   /*margin-top: 0rem;
+   margin-right: auto;
+   margin-bottom: 0rem;
+   margin-left: auto;*/
+   margin: 0rem auto;
+ }
+
+ nav {
+  padding: 2rem;
+
+ }
+
+ nav a {
+  background-color: var(--primario);
  }
