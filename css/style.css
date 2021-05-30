@@ -4,53 +4,302 @@
  --primario: #FFC107;
  --secundario: #0097A7;
  --gris: #757575;
+ --grisclaro: #676766;
 
  }/* pseudoclases o pseudoSelector que permite almacenar variables que se conocen como  CustomProperties */
 
 
-
+ /*************** Globales *****************/
 html{
- font-size: 62.5%;
-} /* seteamos el font size de la pantalla */
+ font-size: 62.5%; /* seteamos el font size de la pantalla */
+ box-sizing: border-box; /* hack box model*/
+ scroll-snap-type: y mandatory;
+} 
+
+
+*, *:before, *:after {
+  box-sizing: inherit; /* hack box model*/
+}
 
 body{
-    font-size: 16px; /** 1 rem = 10 Px   **/
-
-} /*  seteamos el  font size de el body */
-
-
-
-.titulo {
-    text-align: center;
-    text-transform: uppercase;
-    font-size:  3.8rem;
+    font-size: 16px; /** 1 rem = 10 Px **/
     font-family: 'Antonio', sans-serif;
-    font-weight: 300;
-    color: var(--oscuro);
+    background-image: linear-gradient(to top, var(--grisclaro) 0%, var(--blanco) 80%); /* linea para dar el degradado en la pagina web */
+} 
+
+/*** scroll-snap ***/
+
+.servicios, .navegacion-principal, .formulario{
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
  }
 
- span{
+h1{
+  font-size:  3.8rem;
+  font-weight: 300;
+  color: var(--oscuro);
+}
+h2{
+  font-size:  2.8rem;
+}
+h3{
+  font-size:  1.8rem;
+}
+h1, h2, h3 {
+  text-align: center;
+  text-transform: uppercase;
+}
+
+ h1 span{
    font-size: 2rem;
+ }
+
+ footer p{
+   text-align: center;
+ }
+
+ .boton{
+   background-color: var(--secundario);
+   color: var(--blanco);
+   text-decoration: none;
+   padding: 1rem 2rem;
+   margin-top: 0.01rem;
+   font-size: 2rem;
+   text-transform: uppercase;
+   border-radius: 0.5rem;
+   border:none;
+ }
+ .boton:hover{
+   cursor: pointer;
+ } /* cuando a un input se le da estilo se pierde el cursor */
+
+
+ /***UTILIDADES***/
+.w-100{
+  width: 100%;
+}
+
+.flex{
+   display: flex;
+}
+
+.alinear-derecha{
+  justify-content: flex-end;
+}
+@media (min-width : 768px){
+  .w-100{
+    width: auto;
+  }
+} 
+
+
+
+ .sombra{
+   box-shadow: 16px 10px 34px -6px rgba(0,0,0,0.52);
+   background-color: var(--blanco);
+   padding: 2rem;
+   border-radius: 2rem;
+ }
+
+ /*******Navegación*******/
+
+ .navegacion-principal a {
+  color: var(--blanco);
+  text-decoration: none;
+  padding: 1rem;
+  font-size: 2rem;
+ }
+
+ .navegacion-principal a:hover{
+  background-color: var(--primario);
+  color: var(--oscuro);
+
  }
 
  .nav-background{
   background-color: var(--secundario); 
  }
+ .navegacion-principal{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+ }
 
  .contenedor{
-   width: 90rem;
-   /*margin-top: 0rem;
-   margin-right: auto;
-   margin-bottom: 0rem;
-   margin-left: auto;*/
-   margin: 0rem auto;
- }
+  max-width: 120rem;
+  /*margin-top: 0rem;
+  margin-right: auto;
+  margin-bottom: 0rem;
+  margin-left: auto;*/
+  margin: 0rem auto;
+} /* clase contenedo pensado para dar estilo a la a todo el contenido de la pagina, el centrado */
 
- nav {
-  padding: 2rem;
 
- }
 
- nav a {
-  background-color: var(--primario);
+
+ /*******MediaQueries*********/
+ @media (min-width : 0px){
+
+  .contenedor{
+    max-width: 30rem;
+  } 
+  
+ } /* Celular */
+
+ @media (min-width : 480px){
+
+  .contenedor{
+    max-width: 30rem;
+    }  
+
+ } /* Celular */
+
+ @media (min-width : 768px){
+  .contenedor{
+    max-width: 70rem;
+   } 
+
+ } /* Tablet */
+
+ @media (min-width : 1140px){
+
+  .navegacion-principal{
+    flex-direction: row;
+    justify-content: space-between;
+
+   }
+
+
+ } /* Laptop Promedio */
+
+ @media (min-width : 1400px){
+
+  
+ } /* "Más grande" Pantallas Retina */
+
+
+ 
+
+/*****CONTENIDO*********/
+ 
+ .hero{
+    background-image: url("../img/hero.jpg");
+    background-repeat: no-repeat; /* no se repita la imagen */
+    background-size: cover; /* para que tome todo el ancho de la imagen */
+    height: 25rem;
+    position: relative; /* el padre debe tener posicion relativa respecto del hijo */
+    margin-bottom: 2rem;
  }
+#contenido-hero{
+   position: absolute;
+   background-color: rgba(0,0,0,0.5);
+   background-color: rgb(0 0 0 / 60%);
+   width: 100%;
+   height: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+  
+}
+
+#contenido-hero h2, 
+#contenido-hero p{
+ color: var(--blanco);
+}
+
+
+/*** servicios ****/
+
+.servicios{
+  display: grid;
+  /*grid-template-columns: 33.3% 33.3% 33.3%;
+  grid-template-columns: 1fr 1fr 1fr; */
+  grid-template-columns: repeat(3,1fr);   /* repetir  3 veces  1 fraccion del 100%  es decir un tercio*/
+  column-gap: 1rem;
+}
+
+
+.servicio{
+ display: flex;
+ flex-direction: column;
+ align-items: center;
+
+}
+
+.servicio h3{
+ color: var(--secundario);
+ font-weight:bolder;
+
+}
+
+.servicio p{
+
+  line-height: 2;
+}
+
+.iconos{
+   background-color: var(--primario);
+   height: 15rem;
+   width: 15rem;
+   border-radius: 50%;
+   display: flex;
+   justify-content: space-around;
+   align-items: center;
+}
+
+/*** formulario de contacto****/
+.formulario{
+background-color: var(--gris);
+width: min(60rem,100%); /** utiliza el valor mas pequeño***/
+margin: 0 auto;
+padding:2rem;
+border-radius: 1rem;
+}
+.formulario  fieldset{
+  border-style: none; 
+}
+legend{
+  color: var(--primario);
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+@media (min-width : 768px){
+  .contenedor-campos{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    column-gap: 1rem;
+  }
+  .campo:nth-child(3),
+  .campo:nth-child(4){
+   grid-column: 1 / 3;
+  }
+
+ 
+} 
+
+.campo{
+ margin-bottom: 1rem;
+}
+
+.campo label{
+  color : var(--blanco);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.input-text{
+  width: 100%;
+  border: none;
+  padding: 1rem;
+  border-radius: .5rem;
+}
+
+
+
+.campo textarea{
+  height: 20rem;
+}
